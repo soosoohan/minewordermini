@@ -6,17 +6,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="robots" content="noindex, nofollow">
-<title>마인워더 - 워드 서치 퍼즐 2인 대결| Soosooland</title>
+<title>마인워더 미니- 워드 서치 퍼즐 2인 대결| Soosooland</title>
 <script>
   if (window.top !== window.self) {
     window.top.location = "https://soosooland.com";
   }
-  if (window.innerWidth < 580) {
-    window.location.href = 'https://soosooland.com/minewordermini/';
-  }
   console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
   console.log("https://soosooland.com");
-  console.log("🎮 MineWarder | Born: 2026-09-04");
+  console.log("🎮 MineWorder mini | Born: 2026-09-05");
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
@@ -46,8 +43,8 @@ body {
  border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;z-index: 100;}
 
 .back-button:hover { background-color: #1baf8f; color: #fff; }
-  h1 { font-size: 3em; margin: 20px 0 10px; color: #EF0; }
-  p { margin: 0 0 10px; font-size: 1em; color: #EF0; text-align: center; line-height: 1.4; }
+  h1 {  font-size: clamp(18px, 4vw, 24px); margin: 20px 0 10px; color: #EF0; }
+  p { margin: 0 0 10px;  font-size: clamp(14px, 3vw, 18px); color: #EF0; text-align: center; line-height: 1.4; }
 
   .container {
     display: flex;
@@ -91,7 +88,7 @@ body {
     background: #209087;
     color: #fff;
     width: 180px;
-    height: 456px;
+    height: 324px;
     padding: 15px;
     box-sizing: border-box;
     border-radius: 12px;
@@ -107,14 +104,14 @@ body {
   #currentTurn.turn-pink { color: #f7cdf7; }
   #game {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     grid-gap: 4px;
     padding: 10px;
     background-color: #0E756D;
     border-radius: 12px;
-    width: 456px;
-    height: 456px;
+    width: 324px;
+    height: 324px;
     box-sizing: border-box;
     flex-shrink: 0;
   }
@@ -130,17 +127,17 @@ body {
   }
   button:hover { background-color: #1baf8f; color: #fff; }
 footer { text-align: center; color: #c3dbdb; font-size: 0.8rem; margin-top: 30px; }
-  @media (max-width: 910px) {
+  @media (max-width: 700px) {
     h1 { font-size: 2.5em; margin: 15px 0 5px; }
     p { font-size: 0.9em; margin: 0 10px 15px; }
     .container { flex-direction: column; align-items: center; width: 100%; gap: 0; }
-    #game { width:456px; height: auto; aspect-ratio: 1 / 1; grid-gap: 3px; }
+    #game { width: 324px; height: auto; aspect-ratio: 1 / 1; grid-gap: 3px; }
     #greenScore, #pinkScore { display: none !important; }
     .score-container {
       display: flex !important;
       flex-direction: column;
       gap: 10px;
-      width:456px;
+      width:324px;
       margin-top: 15px;
     }
     .score-container > div {
@@ -153,7 +150,7 @@ footer { text-align: center; color: #c3dbdb; font-size: 0.8rem; margin-top: 30px
     }
     .score-container h2 { font-size: 1em; margin: 0 0 8px; }
     .score-container p { font-size: 0.95em; display: inline-block; margin: 3px 6px; color: #fff; text-align: left; }
-    .btn-container { margin: 15px 0; width: 95%; max-width: 456px; justify-content: center; }
+    .btn-container { margin: 15px 0; width: 95%; max-width: 324px; justify-content: center; }
     button { font-size: 1em; padding: 12px 25px; flex: 1; max-width: 150px; }
   }
   @media (max-width: 480px) {
@@ -193,7 +190,7 @@ footer { text-align: center; color: #c3dbdb; font-size: 0.8rem; margin-top: 30px
 </footer>
 
 <script>
-const gridSize = 10;
+const gridSize = 7;
 const totalCells = gridSize * gridSize;
 
 let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
@@ -216,15 +213,15 @@ window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const poolFile = urlParams.get('pool');
   if (!poolFile) {
-    words = ['계륵', '각골난망', '각주구검', '거두절미', '개과천선', '감지덕지', '감언이설', '결초보은','경천동지', '견물생심', '견원지간', '결자해지', '소문만복래'];
+    words = ['계륵', '각골난망', '각주구검', '거두절미', '개과천선'];
     init();
     return;
   }
 
-  fetch('https://soosooland.com/mineworder/wordpools/' + poolFile + '.json')
+  fetch('https://soosooland.com/minewordermini/wordpools/' + poolFile + '.json')
     .then(res => res.json())
     .then(data => {
-      document.getElementById('game-title').textContent = data.title || '마인워더';
+      document.getElementById('game-title').textContent = data.title || '마인워더미니';
       const rawText = data.description || '게임 설명';
       const htmlText = rawText.replace(/\n/g, '<br>');
       document.getElementById('game-desc').innerHTML = htmlText;
