@@ -11,12 +11,9 @@
   if (window.top !== window.self) {
     window.top.location = "https://soosooland.com";
   }
-  if (window.innerWidth < 560) {
-    window.location.href = 'https://soosooland.com/minewordermini/';
-  }
   console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
   console.log("https://soosooland.com");
-  console.log("🎮 MineWorder | Born: 2026-09-04");
+  console.log("🎮 MineWorder mini | Born: 2026-09-05");
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
@@ -90,8 +87,8 @@ body {
 #greenScore, #pinkScore {
     background: #209087;
     color: #fff;
-    width: 180px;
-    height: 480px;
+    width: 150px;
+    height: 320px;
     padding: 15px;
     box-sizing: border-box;
     border-radius: 12px;
@@ -107,14 +104,14 @@ body {
   #currentTurn.turn-pink { color: #f7cdf7; }
   #game {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     grid-gap: 4px;
     padding: 10px;
     background-color: #0E756D;
     border-radius: 12px;
-    width: 480px;
-    height: 480px;
+    width: 320px;
+    height: 320px;
     box-sizing: border-box;
     flex-shrink: 0;
   }
@@ -130,17 +127,17 @@ body {
   }
   button:hover { background-color: #1baf8f; color: #fff; }
 footer { text-align: center; color: #c3dbdb; font-size: 0.8rem; margin-top: 30px; }
-  @media (max-width: 960px) {
+  @media (max-width: 640px) {
     h1 { font-size: 2.5em; margin: 15px 0 5px; }
     p { font-size: 0.9em; margin: 0 10px 15px; }
     .container { flex-direction: column; align-items: center; width: 100%; gap: 0; }
-    #game { width:480px; height: auto; aspect-ratio: 1 / 1; grid-gap: 3px; }
+    #game { width:320px; height: auto; aspect-ratio: 1 / 1; grid-gap: 3px; }
     #greenScore, #pinkScore { display: none !important; }
     .score-container {
       display: flex !important;
       flex-direction: column;
       gap: 10px;
-      width:480px;
+      width:320px;
       margin-top: 15px;
     }
     .score-container > div {
@@ -193,7 +190,7 @@ footer { text-align: center; color: #c3dbdb; font-size: 0.8rem; margin-top: 30px
 </footer>
 
 <script>
-const gridSize = 12;
+const gridSize = 8;
 const totalCells = gridSize * gridSize;
 
 let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
