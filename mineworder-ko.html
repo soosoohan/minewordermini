@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="robots" content="noindex, nofollow">
+<title>마인워더 - 워드 서치 퍼즐 2인 대결| Soosooland</title>
+<script>
+  if (window.top !== window.self) {
+    window.top.location = "https://soosooland.com";
+  }
+  if (window.innerWidth < 580) {
+    window.location.href = 'https://soosooland.com/minewordermini/';
+  }
+  console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
+  console.log("https://soosooland.com");
+  console.log("🎮 MineWarder | Born: 2026-09-04");
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4YZHC1G9FN');
+</script>
+<link rel="stylesheet" href="https://soosooland.com/css/protection.css">
+<script src="https://soosooland.com/js/protection.js"></script>
+<style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    background: #145454;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+  }
+.back-button { position: fixed; top: max(48px, env(safe-area-inset-top) + 20px); left: 22px; width: 44px; height: 44px; padding: 0; font-size: 1.8em; font-weight: bold;
+ background-color: #CFF9FF;
+ color: #145454;
+ border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;z-index: 100;}
+
+.back-button:hover { background-color: #1baf8f; color: #fff; }
+  h1 { font-size: 3em; margin: 20px 0 10px; color: #EF0; }
+  p { margin: 0 0 10px; font-size: 1em; color: #EF0; text-align: center; line-height: 1.4; }
+
+  .container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+  }
+  .cell {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #CFF9FF;
+    color: #0A6A79;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .revealed { background-color: #fff; font-size: 1.6em; }
+  .revealed.num { color: #6FAFB8; }
+  .revealed.num-0 { background-color: #caed9f; }
+  .revealed.clover {
+  background-color: #fff;
+  font-size: 1.6em;
+}
+.revealed.clover span {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+}
+.revealed.daisy {
+  background-color: #fff4e0;
+  font-size: 1.6em;
+}
+#greenScore, #pinkScore {
+    background: #209087;
+    color: #fff;
+    width: 180px;
+    height: 456px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  #greenScore h2, #pinkScore h2 { font-size: 1.2em; margin-top: 0; margin-bottom: 10px; }
+  #greenScore p, #pinkScore p { font-size: 1.2em; margin: 5px 0; text-align: left; }
+  .score-container { display: none; }
+  .word-owned-green { background-color: #a0fab5; }
+  .word-owned-pink { background-color: #f7cdf7; }
+  #currentTurn { font-size: 20px; margin: 10px; font-weight: bold; }
+  #currentTurn.turn-green { color: #a0fab5; }
+  #currentTurn.turn-pink { color: #f7cdf7; }
+  #game {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 4px;
+    padding: 10px;
+    background-color: #0E756D;
+    border-radius: 12px;
+    width: 456px;
+    height: 456px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+  .btn-container { display: flex; gap: 10px; margin: 15px; }
+  button {
+    font-size: 1.1em;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #CFF9FF;
+    color: #0A6A79;
+    border-radius: 12px;
+    border: none;
+  }
+  button:hover { background-color: #1baf8f; color: #fff; }
+footer { text-align: center; color: #c3dbdb; font-size: 0.8rem; margin-top: 30px; }
+  @media (max-width: 910px) {
+    h1 { font-size: 2.5em; margin: 15px 0 5px; }
+    p { font-size: 0.9em; margin: 0 10px 15px; }
+    .container { flex-direction: column; align-items: center; width: 100%; gap: 0; }
+    #game { width:456px; height: auto; aspect-ratio: 1 / 1; grid-gap: 3px; }
+    #greenScore, #pinkScore { display: none !important; }
+    .score-container {
+      display: flex !important;
+      flex-direction: column;
+      gap: 10px;
+      width:456px;
+      margin-top: 15px;
+    }
+    .score-container > div {
+      background-color: #0E756D;
+      color: #fff;
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+      border-radius: 12px;
+    }
+    .score-container h2 { font-size: 1em; margin: 0 0 8px; }
+    .score-container p { font-size: 0.95em; display: inline-block; margin: 3px 6px; color: #fff; text-align: left; }
+    .btn-container { margin: 15px 0; width: 95%; max-width: 456px; justify-content: center; }
+    button { font-size: 1em; padding: 12px 25px; flex: 1; max-width: 150px; }
+  }
+  @media (max-width: 480px) {
+.back-button { top: max(30px, env(safe-area-inset-top) + 10px); left: 10px; width: 40px; height: 40px; font-size: 1.5em; }
+}
+
+</style>
+</head>
+
+<body>
+<button class="back-button" onclick="location.href='https://soosooland.com/mineworder/index.html'">←</button>
+<div class="game-header">
+  <h1 id="game-title">게임 제목</h1>
+  <p id="game-desc">게임 설명</p>
+</div>
+
+<div id="gameScreen">
+<div id="currentTurn"></div>
+
+<div class="container">
+  <div id="greenScore"><h2>초록:</h2></div>
+  <div id="game"></div>
+  <div id="pinkScore"><h2>분홍:</h2></div>
+</div>
+
+<div class="score-container">
+  <div id="greenScore-mobile"><h2>초록:</h2></div>
+  <div id="pinkScore-mobile"><h2>분홍:</h2></div>
+</div>
+
+<div class="btn-container">
+  <button id="retryBtn">↻다시 시작</button>
+</div>
+</div>
+<footer>
+  <p>© 2025-2026 Han Soosoo. All rights reserved.</p>
+</footer>
+
+<script>
+const gridSize = 10;
+const totalCells = gridSize * gridSize;
+
+let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
+let zeroDecoration = {};
+let resultShown = false;
+
+const gameEl = document.getElementById('game');
+const greenScoreEl = document.getElementById('greenScore');
+const pinkScoreEl = document.getElementById('pinkScore');
+const greenScoreMobileEl = document.getElementById('greenScore-mobile');
+const pinkScoreMobileEl = document.getElementById('pinkScore-mobile');
+const retryBtn = document.getElementById('retryBtn');
+const currentTurnEl = document.getElementById('currentTurn');
+
+function startGame() {
+  init();
+}
+
+window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const poolFile = urlParams.get('pool');
+  if (!poolFile) {
+    words = ['계륵', '각골난망', '각주구검', '거두절미', '개과천선', '감지덕지', '감언이설', '결초보은','경천동지', '견물생심', '견원지간', '결자해지', '소문만복래'];
+    init();
+    return;
+  }
+
+  fetch('https://soosooland.com/mineworder/wordpools/' + poolFile + '.json')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('game-title').textContent = data.title || '마인워더';
+      const rawText = data.description || '게임 설명';
+      const htmlText = rawText.replace(/\n/g, '<br>');
+      document.getElementById('game-desc').innerHTML = htmlText;
+
+      words = [];
+      for (let length in data.words) {
+        const count = data.wordCount[length] || 0;
+        words.push(...getRandomSample(data.words[length], count));
+      }
+      init();
+    })
+    .catch(err => {
+      document.body.innerHTML = '<p>❌ 워드풀 로딩 중 오류 발생: ' + err.message + '</p>';
+    });
+};
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function getRandomSample(arr, count) {
+  if (count >= arr.length) return [...arr];
+  const shuffled = [...arr];
+  shuffle(shuffled);
+  return shuffled.slice(0, count);
+}
+
+function init() {
+  board = Array(totalCells).fill(null);
+  revealed = Array(totalCells).fill(false);
+  wordMap = {};
+  foundWords = new Set();
+  foundBy = { green: [], pink: [] };
+  currentPlayer = 'green';
+  usedIndexes = new Set();
+  zeroDecoration = {};
+  resultShown = false;
+
+  createGrid();
+
+  if (!placeAllWordsWithVariety()) {
+    const sortedWords = [...words].sort((a, b) => b.length - a.length);
+    for (let word of sortedWords) {
+      for (let attempt = 0; attempt < 500; attempt++) {
+        if (placeWord(word)) break;
+      }
+    }
+  }
+
+  fillEmptyCells();
+  updateScore();
+  updateTurnDisplay();
+  checkGameEnd();
+}
+
+function createGrid() {
+  gameEl.innerHTML = '';
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.onclick = () => { if (!resultShown) handleClick(i); };
+    gameEl.appendChild(cell);
+  }
+}
+
+function canPlaceWord(word, x, y, dx, dy) {
+  for (let i = 0; i < word.length; i++) {
+    let nx = x + dx * i, ny = y + dy * i;
+    if (nx < 0 || ny < 0 || nx >= gridSize || ny >= gridSize) return false;
+    let idx = ny * gridSize + nx;
+    if (board[idx] && board[idx] !== word[i]) return false;
+    if (usedIndexes.has(idx)) return false;
+  }
+  return true;
+}
+
+function getZone(x, y) {
+  const zoneX = x < 6 ? 0 : 1;
+  const zoneY = y < 6 ? 0 : 1;
+  return zoneY * 2 + zoneX;
+}
+
+let zoneCounts = [0, 0, 0, 0];
+
+function placeAllWordsWithVariety() {
+  let attempts = 0;
+  const maxAttempts = 10;
+  do {
+    board = Array(totalCells).fill(null);
+    usedIndexes.clear();
+    wordMap = {};
+    zoneCounts = [0, 0, 0, 0];
+    let allPlaced = true;
+    const sortedWords = [...words].sort((a, b) => b.length - a.length);
+    for (let word of sortedWords) {
+      if (!placeWord(word)) { allPlaced = false; break; }
+    }
+    if (allPlaced && checkDirectionVariety()) return true;
+    attempts++;
+  } while (attempts < maxAttempts);
+  return false;
+}
+
+function placeWord(word) {
+  const directions = [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 1 }];
+  const shuffledDirections = directions.sort(() => Math.random() - 0.5);
+  const zoneOrder = [0, 1, 2, 3].sort((a, b) => zoneCounts[a] - zoneCounts[b]);
+
+  for (let dir of shuffledDirections) {
+    for (let zone of zoneOrder) {
+      const startY = Math.floor(Math.random() * gridSize);
+      const startX = Math.floor(Math.random() * gridSize);
+      for (let i = 0; i < gridSize; i++) {
+        const y = (startY + i) % gridSize;
+        for (let j = 0; j < gridSize; j++) {
+          const x = (startX + j) % gridSize;
+          if (getZone(x, y) !== zone) continue;
+          if (canPlaceWord(word, x, y, dir.x, dir.y)) {
+            let positions = [];
+            for (let i = 0; i < word.length; i++) {
+              let nx = x + dir.x * i, ny = y + dir.y * i, idx = ny * gridSize + nx;
+              board[idx] = word[i];
+              usedIndexes.add(idx);
+              positions.push(idx);
+            }
+            wordMap[word] = { positions: positions, direction: [dir.x, dir.y] };
+            zoneCounts[getZone(x, y)]++;
+            return true;
+          }
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function checkDirectionVariety() {
+  let directionCount = { '1,0': 0, '0,1': 0, '1,1': 0 };
+  for (let word in wordMap) {
+    const direction = wordMap[word].direction;
+    const key = direction[0] + ',' + direction[1];
+    if (directionCount.hasOwnProperty(key)) directionCount[key]++;
+  }
+  return directionCount['1,0'] > 0 && directionCount['0,1'] > 0 && directionCount['1,1'] > 0;
+}
+
+function fillEmptyCells() {
+  for (let j = 0; j < totalCells; j++) {
+    if (usedIndexes.has(j)) continue;
+    const num = countAdjacentLetters(j);
+    board[j] = num;
+    if (num === 0) {
+      zeroDecoration[j] = Math.random() < 0.5 ? 'clover' : 'daisy';
+    }
+  }
+}
+
+function countAdjacentLetters(idx) {
+  const x = idx % gridSize, y = Math.floor(idx / gridSize);
+  let count = 0;
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      if (dx === 0 && dy === 0) continue;
+      const nx = x + dx, ny = y + dy;
+      if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize) {
+        if (usedIndexes.has(ny * gridSize + nx)) count++;
+      }
+    }
+  }
+  return count;
+}
+
+function reveal(index) {
+  if (revealed[index]) return;
+  revealed[index] = true;
+  const cell = gameEl.children[index];
+
+  if (usedIndexes.has(index)) {
+    cell.textContent = board[index];
+  } else {
+    const num = board[index];
+
+    if (num === 0) {
+      const deco = zeroDecoration[index];
+      if (deco === 'clover') {
+        cell.innerHTML = '<span>🍀</span>';
+        cell.classList.add('clover');
+      } else {
+        const img = document.createElement('img');
+        img.src = 'https://soosooland.com/mineworder/daisy_64x64.png';
+        img.alt = '데이지';
+        img.style.width = '24px';
+        img.style.height = '24px';
+        cell.appendChild(img);
+        cell.classList.add('daisy');
+      }
+
+      const x = index % gridSize, y = Math.floor(index / gridSize);
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          if (dx === 0 && dy === 0) continue;
+          const nx = x + dx, ny = y + dy;
+          if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize) {
+            const nIdx = ny * gridSize + nx;
+            if (!revealed[nIdx]) reveal(nIdx);
+          }
+        }
+      }
+    } else {
+      cell.textContent = num;
+      cell.classList.add('num');
+      cell.classList.add('num-' + num);
+    }
+  }
+  cell.classList.add('revealed');
+}
+
+function updateScore() {
+  const greenHTML = `<h2>초록:</h2>` + foundBy.green.map(w => `<p>${w}</p>`).join("");
+  const pinkHTML = `<h2>분홍:</h2>` + foundBy.pink.map(w => `<p>${w}</p>`).join("");
+  greenScoreEl.innerHTML = greenHTML;
+  pinkScoreEl.innerHTML = pinkHTML;
+  greenScoreMobileEl.innerHTML = greenHTML;
+  pinkScoreMobileEl.innerHTML = pinkHTML;
+}
+
+function updateTurnDisplay() {
+  if (resultShown) return;
+  const name = currentPlayer === 'green' ? '초록' : '분홍';
+  currentTurnEl.textContent = `${name} 차례입니다.`;
+  currentTurnEl.className = currentPlayer === 'green' ? 'turn-green' : 'turn-pink';
+}
+
+function switchTurn() {
+  currentPlayer = currentPlayer === 'green' ? 'pink' : 'green';
+  updateTurnDisplay();
+}
+
+function handleClick(index) {
+  if (revealed[index] || resultShown) return;
+
+  reveal(index);
+  checkWords();
+  checkGameEnd();
+
+  if (!resultShown) switchTurn();
+}
+
+function checkWords() {
+  for (let word of Object.keys(wordMap)) {
+    if (foundWords.has(word)) continue;
+    const pos = wordMap[word].positions;
+    if (pos.every(i => revealed[i])) {
+      foundWords.add(word);
+      foundBy[currentPlayer].push(word);
+      pos.forEach(i => {
+        const cell = gameEl.children[i];
+        cell.classList.add(currentPlayer === 'green' ? 'word-owned-green' : 'word-owned-pink');
+      });
+      updateScore();
+    }
+  }
+}
+
+function checkGameEnd() {
+  const totalWords = Object.keys(wordMap).length;
+  if (foundWords.size >= totalWords && totalWords > 0) {
+    resultShown = true;
+    const greenWords = foundBy.green.length;
+    const pinkWords = foundBy.pink.length;
+
+    let winner;
+    if (greenWords > pinkWords) {
+  winner = '초록 승리!';
+} else if (pinkWords > greenWords) {
+  winner = '분홍 승리!';
+} else {
+  winner = '무승부!';
+}
+  currentTurnEl.textContent = `게임 종료! ${winner} (초록: ${greenWords} / 분홍: ${pinkWords})`;
+  currentTurnEl.className = '';
+  }
+}
+
+retryBtn.onclick = () => { startGame(); };
+</script>
+
+</body>
+</html>
