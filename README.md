@@ -3,9 +3,9 @@
 All games are registered copyrights. Unauthorized copying or redistribution is prohibited.  
 모든 게임은 저작권 등록된 창작물입니다. 무단 복제 및 배포를 금합니다.  
 تمام گیمز کاپی رائٹ محفوظ ہیں۔ غیر مجاز نقل ممنوع ہے۔
-## 👤🆚🤖  마인워더 (WordMine)
+## 👤🆚🤖  마인워더 미니(WordMine)
 
-마인워더는 격자를 탐험하여 숨겨진 단어를 찾는 게임입니다!  
+마인워더 미니는 격자를 탐험하여 숨겨진 단어를 찾는 게임입니다!  
 mineWorder is a game where you explore a grid to find hidden words!   
 
 (“Mineworder”라는 이름은 “mine”와 “worder”의 조합입니다.)  
@@ -53,17 +53,18 @@ mineWorder is a game where you explore a grid to find hidden words!
 앞으로 더 다양한 주제와 중국어, 일본어 같은 다양한 언어로 게임을 개발할 계획입니다.  
 We plan to develop games with more diverse topics and in various languages such as Chinese and Japanese in the future.
   
-### 📌 격자 크기와 게임 종류 ( 일부 게임은 현재 개발중입니다.)
+### 📌 격자 크기와 게임 종류
 
-| 격자 크기  grid size     | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |👤 혼자 하기 |
-|------------------|--------------|----------------|------|
-|영 8x8 한 7x7  | 워드마인 미니 (Wordmine mini)        | 마인워더 미니(MineWorder mini)    | 워드마인 솔로 미니(Wordmine Solo mini) |
-|영 12x12 한 10x10    | 워드마인 (Wordmine)   | 마인워더 (MineWorder)    | 워드마인 솔로(Wordmine Solo)|
-|영 14x14 한 12x12    | 워드마인 라지(Wordmine large)    | 마인워더 라지(MineWorder large)   |워드마인 솔로 라지(Wordmine Solo large)|
-|영 16X16 한 14X14 | 워드마인 XL (Wordmine XL) |마인워더 XL (MineWorder XL) |워드마인 솔로 XL(Wordmine Solo XL)|
+| 격자 크기  grid size  | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |
+|------------------|--------------|----------------|
+|영 8x8 한 7x7  | 워드마인 미니 (Wordmine mini)        | 마인워더 미니(MineWorder mini)    | 
+|영 12x12 한 10x10    | 워드마인 (Wordmine)   | 마인워더 (MineWorder)    | 
+|영 14x14 한 12x12    | 워드마인 라지(Wordmine large)    | 마인워더 라지(MineWorder large)   |
+|영 16X16 한 14X14 | 워드마인 XL (Wordmine XL) |마인워더 XL (MineWorder XL) |
+
 ---
 
-## 워드마인 주소 : https://soosooland.com/wordmine/ 
+## 워드마인 미니 주소 : https://soosooland.com/wordminemini/ 
 
 ## 🌟 Soosooland - Puzzle Game Hub by Han Soosoo
 
