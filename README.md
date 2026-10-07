@@ -63,7 +63,7 @@ We plan to develop games with more diverse topics and in various languages such 
 
 ---
 
-## 워퍼즈 워드마인 콩(Worpuzz Mineworder Kong) : https://soosooland.com/wordminemini/ 
+## 워퍼즈 마인워더 콩(Worpuzz Mineworder Kong) : https://soosooland.com/minewordermini/ 
 
 ## 🌟 Soosooland - Puzzle Game Hub by Han Soosoo
 
