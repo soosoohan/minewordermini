@@ -3,17 +3,17 @@
 All games are registered copyrights. Unauthorized copying or redistribution is prohibited.  
 모든 게임은 저작권 등록된 창작물입니다. 무단 복제 및 배포를 금합니다.  
 تمام گیمز کاپی رائٹ محفوظ ہیں۔ غیر مجاز نقل ممنوع ہے۔
-## 👤🆚🤖  마인워더 미니(WordMine)
 
-마인워더 미니는 격자를 탐험하여 숨겨진 단어를 찾는 게임입니다!  
-mineWorder is a game where you explore a grid to find hidden words!   
+---
+## 👤🆚🤖  워퍼즈 마인워더 콩(Worpuzz Mineworder Kong)
+
+워퍼즈 마인워더는 격자를 탐험하여 숨겨진 단어를 찾는 게임입니다!  
+Worpuzz MineWorder is a game where you explore a grid to find hidden words!   
 
 (“Mineworder”라는 이름은 “mine”와 “worder”의 조합입니다.)  
 (The name “Mineworder” is a combination of “mine” and “worder”.)
 
 ### 🔎 게임 방법 / How to Play
-
-##워퍼즈의 기본 규칙 / Basic Rules of Worpuzz
 
 - 이 게임은 지뢰찾기를 개조한 워드서치 게임입니다.  
 - 단어는 가로, 세로, 대각선 방향으로 숨겨져 있으며, 마지막 글자를 열면 해당 단어를 획득합니다.
@@ -31,11 +31,6 @@ mineWorder is a game where you explore a grid to find hidden words!
 - Choose a word pool below to begin the game.  
 - Uses the Oxford dictionary’s word difficulty levels for an engaging challenge.
 - Playable in both Korean and English! The game will continue to be improved and upgraded.
-
-#워퍼즈와 다른 규칙 / Rules Different from Worpuzz
-
-- 두 사용자가 교대로 클릭하면서  단어의 마지막 글자를 찾으면 점수를 얻습니다.  
-- Two players take turns clicking cells — whoever reveals the last letter of a word scores it.
 - 숫자 힌트를 이용해서 숨겨진 단어를 찾으세요.  
 - Look at the number hints and click the grid to find the words.  
 
@@ -55,16 +50,19 @@ We plan to develop games with more diverse topics and in various languages such 
   
 ### 📌 격자 크기와 게임 종류
 
-| 격자 크기  grid size  | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |
-|------------------|--------------|----------------|
-|영 8x8 한 7x7  | 워드마인 미니 (Wordmine mini)        | 마인워더 미니(MineWorder mini)    | 
-|영 12x12 한 10x10    | 워드마인 (Wordmine)   | 마인워더 (MineWorder)    | 
-|영 14x14 한 12x12    | 워드마인 라지(Wordmine large)    | 마인워더 라지(MineWorder large)   |
-|영 16X16 한 14X14 | 워드마인 XL (Wordmine XL) |마인워더 XL (MineWorder XL) |
+| 격자 크기  grid size     | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |👤 혼자 하기 |숫자 힌트|
+|------------------|--------------|----------------|------|---|
+|En 8x8 <br>한 7x7  | 워퍼즈 미니 (Worpuzz mini)  | 워퍼즈 메이트 콩(Worpuzz Mate Kong)    | 워퍼즈 브리즈 팝(Worpuzz Breeze Pop) |없음(Off)|
+|En 8x8<br>한 7x7  | 워퍼즈마인 미니 (Worpuzz Mine mini)        | 마인워더 미니(Worpuzz MineWorder kong)  |-  | 있음(On)|
+|En 12x12<br>한 10x10    | 워퍼즈(Worpuzz)   | 워퍼즈 메이트(Worpuzz Mate)    | 워퍼즈 브리즈(Worpuzz breeze)|없음(Off)|
+|En 12x12<br> 한 10x10    | 워퍼즈마인 (Worpuzz Mine)   | 워퍼즈 마인워더 (Worpuzz MineWorder)  |-  | 있음(On)|
+|En 14x14<br>한 12x12    | 워퍼즈 몽(Worpuzz Mong)    | 워퍼즈 메이트 찌니(Worpuzz Mate ZZini)   |워퍼즈 브리즈 젠(Worpuzz Breeze Zen)|없음(Off)|
+|En 14x14<br>한 12x12    |워퍼즈마인 몽(Worpuzz Mine Mong)    | 마인워더 라지(Worpuzz MineWorder Zzini)| -  |있음(On)|
+|En 16x16<br>한 14x14 | - |-|워퍼즈 브리즈 필드(Worpuzz Breeze Field)|없음(Off)|
 
 ---
 
-## 워드마인 미니 주소 : https://soosooland.com/wordminemini/ 
+## 워퍼즈 워드마인 콩(Worpuzz Mineworder Kong) : https://soosooland.com/wordminemini/ 
 
 ## 🌟 Soosooland - Puzzle Game Hub by Han Soosoo
 
