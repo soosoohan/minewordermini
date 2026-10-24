@@ -503,6 +503,7 @@ function checkWords() {
 }
 
 function checkGameEnd() {
+  if (resultShown) return;
   const totalWords = Object.keys(wordMap).length;
   if (foundWords.size >= totalWords && totalWords > 0) {
     resultShown = true;
@@ -511,14 +512,23 @@ function checkGameEnd() {
 
     let winner;
     if (greenWords > pinkWords) {
-  winner = '초록 승리!';
-} else if (pinkWords > greenWords) {
-  winner = '분홍 승리!';
-} else {
-  winner = '무승부!';
-}
-  currentTurnEl.textContent = `게임 종료! ${winner} (초록: ${greenWords} / 분홍: ${pinkWords})`;
-  currentTurnEl.className = '';
+      winner = '초록 승리!';
+    } else if (pinkWords > greenWords) {
+      winner = '분홍 승리!';
+    } else {
+      winner = '무승부!';
+    }
+    const scoreText = `초록: ${greenWords} / 분홍: ${pinkWords}`;
+    currentTurnEl.textContent = `게임 종료! ${winner} (${scoreText})`;
+    currentTurnEl.className = '';
+
+    showEndOverlay({
+      lang: 'ko',
+      result: greenWords === pinkWords ? 'draw' : 'win',
+      title: winner,
+      scoreText: scoreText,
+      onRestart: () => location.reload()
+    });
   }
 }
 
