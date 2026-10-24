@@ -503,6 +503,7 @@ function checkWords() {
 }
 
 function checkGameEnd() {
+  if (resultShown) return;
   const totalWords = Object.keys(wordMap).length;
   if (foundWords.size >= totalWords && totalWords > 0) {
     resultShown = true;
@@ -517,8 +518,17 @@ function checkGameEnd() {
     } else {
       winner = "It's a Draw!";
     }
-    currentTurnEl.textContent = `Game Over! ${winner} (Green: ${greenWords} / Pink: ${pinkWords})`;
+    const scoreText = `Green: ${greenWords} / Pink: ${pinkWords}`;
+    currentTurnEl.textContent = `Game Over! ${winner} (${scoreText})`;
     currentTurnEl.className = '';
+
+    showEndOverlay({
+      lang: 'en',
+      result: greenWords === pinkWords ? 'draw' : 'win',
+      title: winner,
+      scoreText: scoreText,
+      onRestart: () => location.reload()
+    });
   }
 }
 
