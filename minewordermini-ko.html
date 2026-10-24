@@ -99,6 +99,9 @@ body {
   .score-container { display: none; }
   .word-owned-green { background-color: #a0fab5; }
   .word-owned-pink { background-color: #f7cdf7; }
+ .cell.last-click {
+  box-shadow: inset 0 0 0 3px #FF9F1C;
+  }
   #currentTurn { font-size: 20px; margin: 10px; font-weight: bold; }
   #currentTurn.turn-green { color: #a0fab5; }
   #currentTurn.turn-pink { color: #f7cdf7; }
@@ -201,6 +204,7 @@ const totalCells = gridSize * gridSize;
 let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
 let zeroDecoration = {};
 let resultShown = false;
+let lastIndex = null;
 
 const gameEl = document.getElementById('game');
 const greenScoreEl = document.getElementById('greenScore');
@@ -267,6 +271,7 @@ function init() {
   usedIndexes = new Set();
   zeroDecoration = {};
   resultShown = false;
+  lastIndex = null;
 
   createGrid();
 
@@ -471,10 +476,13 @@ function switchTurn() {
 function handleClick(index) {
   if (revealed[index] || resultShown) return;
 
+  if (lastIndex !== null) gameEl.children[lastIndex].classList.remove('last-click');
+  gameEl.children[index].classList.add('last-click');
+  lastIndex = index;
+
   reveal(index);
   checkWords();
   checkGameEnd();
-
   if (!resultShown) switchTurn();
 }
 
