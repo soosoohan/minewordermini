@@ -120,6 +120,12 @@ font-size: clamp(1.3rem, 3.7vw, 1.9rem);
 color: #FF9494; /* 포인트 핑크 */
 margin-bottom: 20px;
 }
+h2.one-line {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 8px auto 16px;
+}
 
 .redirect-message {
 background-color: #FF9494;
@@ -289,34 +295,50 @@ display: none;
 }
 </style>
 </head>
-<body onload="initLanguage()">
+<body>
    <button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
    <img src="https://soosooland.com/images/home.png" alt="수수랜드 홈"></button>
    <div class="language-toggle">
   <button class="language-button" onclick="toggleLanguage('ko')">한</button>
   <button class="language-button" onclick="toggleLanguage('en')">EN</button>
 </div>
-
 <h1 class="lang-ko">마인워더 콩</h1>
 <h1 class="lang-en">MineWorder kong</h1>
-  <div class="description">
-    <div id="korean-description" class="lang-ko">
-    마인워더콩은 지뢰찾기를 개조한 워드서치 게임입니다.<br>
+
+<p class="lang-ko one-line">
+  지뢰찾기처럼 숫자 힌트를 보고 격자 뒤에 숨은 단어를 찾는 워드서치 게임입니다.
+</p>
+<p class="lang-en one-line">
+  MineWorder kong is a word search game with a Minesweeper twist.
+  </p>
+
+<div class="description">
+  <details class="rules rules-ko" lang="ko">
+    <summary>게임 방법과 규칙</summary>
+    <p>
+       마인워더콩은 지뢰찾기를 개조한 워드서치 게임입니다.<br>
     마인워더콩의 격자 크기에는 세 종류가 있으며, 마인워더 콩은 영어는 가로8*세로8이고,  한글은 가로7*세로7이 있는 작은 사이즈입니다.<br>
     지뢰를 밟으면 게임이  종료되는 지뢰찾기와 달리 마인워더의 격자 뒤에는 단어가 가로, 세로, 대각선 방향으로 숨겨져 있습니다.<br>
     격자에 적힌 숫자는 격자 주변에 있는 글자의 수입니다. 숫자 힌트를 이용해서 숨겨진 단어를 찾으세요.<br>
    두 사용자가 교대로 클릭해서 단어의 마지막 글자를 열면 해당 단어를 획득합니다. <br>
-    아래에서 원하는 워드풀을 선택해 게임을 시작하세요.<br>
-    </div>
-  <div id="english-description" class="lang-en">
+    아래에서 원하는 워드풀을 선택해 게임을 시작하세요.
+    </p>
+  </details>
+
+  <details class="rules rules-en" lang="en">
+    <summary>How to Play &amp; Rules</summary>
+    <p>
+   A Minesweeper-style word search: use number hints to find the words hidden behind the grid.
    MineWorder kong is a word search game with a Minesweeper twist.<br>
    MineWorder comes in three grid sizes. 
    MineWorder kong is the small size: 8×8 for English and 7×7 for Korean.<br>
    Unlike Minesweeper, where stepping on a mine ends the game, MineWorder hides words behind the grid, placed horizontally, vertically, or diagonally.<br>
    The number on each cell shows how many letters are in the cells around it. Use the number hints to find the hidden words.<br>
    Two players take turns clicking, and you earn a word by revealing its final letter.<br>
-   Choose a word pool below to start the game.<br>
-  </div>
+   Choose a word pool below to start the game.
+   </p>
+  </details>
+</div>
   </div>
        
   <div class="row-container">
@@ -353,40 +375,40 @@ display: none;
  <script>
 
 function toggleLanguage(lang) {
+  // 한/영 텍스트 표시 전환
   document.querySelectorAll('.lang-ko').forEach(el => {
     el.style.display = (lang === 'ko') ? '' : 'none';
   });
   document.querySelectorAll('.lang-en').forEach(el => {
     el.style.display = (lang === 'en') ? '' : 'none';
   });
+
+  // 버튼 활성 표시
   document.querySelectorAll('.language-button').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`.language-button[onclick*="'${lang}'"]`).classList.add('active');
 
-  // 사용자가 수동으로 고른 언어는 기억해두기
+  // 규칙 details: 현재 언어 쪽만 펼치기 (숨기지 않음)
+  document.querySelectorAll('.rules').forEach(el => {
+    el.open = el.classList.contains('rules-' + lang);
+  });
+
+  // 선택한 언어 기억
   localStorage.setItem('preferredLang', lang);
 }
 
+
 // 페이지 로드시 자동 감지
+// 페이지 로드시 언어 자동 감지
 (function detectLanguage() {
   const saved = localStorage.getItem('preferredLang');
   if (saved) {
     toggleLanguage(saved);
     return;
   }
-  const browserLang = navigator.language || navigator.userLanguage;
-  const lang = browserLang.startsWith('ko') ? 'ko' : 'en';
-  toggleLanguage(lang);
+  const browserLang = navigator.language || navigator.userLanguage || '';
+  toggleLanguage(browserLang.startsWith('ko') ? 'ko' : 'en');
 })();
 
-function initLanguage() {
-  const saved = localStorage.getItem('soosoo-lang');
-  if (saved) {
-    toggleLanguage(saved); // 저장된 값 우선
-  } else {
-    const lang = navigator.language.startsWith('ko') ? 'ko' : 'en';
-    toggleLanguage(lang); // 브라우저 언어 감지
-  }
-}
 
 function startGame(poolName, isEnglish) {
     const page = isEnglish ? 'minewordermini-en.html' : 'minewordermini-ko.html';
