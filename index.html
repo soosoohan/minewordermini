@@ -114,19 +114,12 @@ body {
     .language-button.active {
         background: #ff69b4;
     }
-
-h1 {
-font-size: clamp(1.3rem, 3.7vw, 1.9rem);
-color: #FF9494; /* 포인트 핑크 */
-margin-bottom: 20px;
-}
-
-.banner-title {
+.main-title {
     margin: 60px 0 20px;
     font-size: 0;
 }
 
-.banner-title img {
+.main-title img {
     display: block;
     width: 100%;
     max-width: 900px;
@@ -299,9 +292,14 @@ display: none;
   <button class="language-button" onclick="toggleLanguage('ko')">한</button>
   <button class="language-button" onclick="toggleLanguage('en')">EN</button>
 </div>
- <h1 class="lang-ko banner-title"><img src="banner.jpeg" alt="마인워더 콩"></h1>
- <h1 class="lang-en banner-title"><img src="banner.jpeg" alt="MineWorder Kong"></h1>
 
+<div class="header">
+    <h1 class="main-title">
+        <img src="banner.jpeg" alt="마인워더 콩 MineWorder Kong">
+    </h1>
+</div>
+
+  
   <div class="description">
     <div id="korean-description" class="lang-ko">
    <p style="text-align: left; padding-left: 20px;">
